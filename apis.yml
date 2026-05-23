@@ -1,0 +1,223 @@
+aid: nabla
+url: https://raw.githubusercontent.com/api-evangelist/nabla/refs/heads/main/apis.yml
+name: Nabla
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+description: Nabla provides ambient AI for clinicians through its Copilot product, which generates
+  clinical notes from patient encounters across more than 85,000 clinicians and 150+ health
+  organizations. Nabla also publishes a public Core API that exposes the same underlying
+  capabilities (medical transcription, structured note generation, FHIR-normalized data extraction,
+  multilingual patient summaries, magic edit, custom dictionary, dot phrases, and dictation) to
+  third-party telehealth platforms, EHRs, and voice-enabled applications. Authentication uses OAuth
+  2.0 client credentials for the Server API and JWT-based access tokens for the User API.
+tags:
+  - Healthcare
+  - Ambient AI
+  - Clinical Documentation
+  - Medical Transcription
+  - Speech Recognition
+  - FHIR
+  - SOAP Notes
+  - Voice
+  - EHR Integration
+created: '2026-05-23'
+modified: '2026-05-23'
+specificationVersion: '0.19'
+apis:
+  - aid: nabla:nabla-core-api
+    name: Nabla Core API
+    description: The Nabla Core API transcribes medical encounters, generates structured clinical
+      notes (for example SOAP), extracts FHIR-normalized data with ICD-10 and LOINC coding, produces
+      multilingual patient-facing summaries, and supports magic edit, dictation, dot phrases, custom
+      dictionaries, and feedback reporting. The API offers REST, WebSocket, and asynchronous
+      endpoints, with audio file support up to 60 minutes.
+    humanURL: https://docs.nabla.com/
+    baseURL: https://api.nabla.com
+    tags:
+      - Transcription
+      - Clinical Notes
+      - SOAP
+      - FHIR
+      - Dictation
+      - Patient Summaries
+      - Magic Edit
+      - WebSocket
+    properties:
+      - type: Documentation
+        url: https://docs.nabla.com/
+      - type: GettingStarted
+        url: https://docs.nabla.com/guides/intro
+      - type: Authentication
+        url: https://docs.nabla.com/guides/authentication
+      - type: SampleApp
+        url: https://github.com/nabla/sample-app
+      - type: CopilotSampleApp
+        url: https://github.com/nabla/copilot-sample
+    contact:
+      - FN: Nabla
+        url: https://www.nabla.com/contact
+  - aid: nabla:nabla-copilot-server-api
+    name: Nabla Copilot Server API
+    description: The Server API is intended for server-to-server interactions, allowing backend
+      systems to manage Copilot users and resources via OAuth 2.0 client credentials. OAuth clients
+      can be configured with a JWKS URL (preferred for key rotation) or a static X.509-encoded
+      public key.
+    humanURL: https://docs.nabla.com/server/jwt-authenticate-copilot-user/
+    baseURL: https://api.nabla.com
+    tags:
+      - Server API
+      - OAuth 2.0
+      - Client Credentials
+      - User Management
+    properties:
+      - type: Documentation
+        url: https://docs.nabla.com/server/jwt-authenticate-copilot-user/
+      - type: Authentication
+        url: https://docs.nabla.com/guides/authentication
+    contact:
+      - FN: Nabla
+        url: https://www.nabla.com/contact
+  - aid: nabla:nabla-copilot-user-api
+    name: Nabla Copilot User API
+    description: The User API enables client-side applications to act on behalf of an individual
+      user by exchanging server-issued access and refresh tokens to autonomously call the Nabla
+      Core API. Includes WebSocket transcription for live medical encounters via
+      /user/copilot/listen.
+    humanURL: https://docs.nabla.com/user/copilot-listen-ws/
+    baseURL: https://api.nabla.com
+    tags:
+      - User API
+      - JWT
+      - WebSocket
+      - Live Transcription
+    properties:
+      - type: Documentation
+        url: https://docs.nabla.com/user/copilot-listen-ws/
+      - type: Authentication
+        url: https://docs.nabla.com/guides/authentication
+    contact:
+      - FN: Nabla
+        url: https://www.nabla.com/contact
+common:
+  - type: Website
+    url: https://www.nabla.com/
+  - type: Documentation
+    url: https://docs.nabla.com/
+  - type: GettingStarted
+    url: https://docs.nabla.com/guides/intro
+  - type: Authentication
+    url: https://docs.nabla.com/guides/authentication
+  - type: HelpCenter
+    url: https://help.nabla.com/
+  - type: StatusPage
+    url: https://status.nabla.com/
+  - type: Blog
+    url: https://www.nabla.com/blog
+  - type: Newsletter
+    url: https://thehealthcarehoagie.substack.com/
+  - type: Contact
+    url: https://www.nabla.com/contact
+  - type: Email
+    url: mailto:contact@nabla.com
+  - type: GitHubOrganization
+    url: https://github.com/nabla
+  - type: SampleApp
+    url: https://github.com/nabla/sample-app
+  - type: CopilotSampleApp
+    url: https://github.com/nabla/copilot-sample
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/nabla-technologies
+  - type: Twitter
+    url: https://twitter.com/nabla_tech
+  - type: Features
+    data:
+      - name: Ambient AI Documentation
+        description: Automatic generation of clinical notes from patient encounters.
+      - name: Medical Transcription
+        description: Medical-grade speech-to-text via real-time WebSocket, REST, and async endpoints
+          for audio files up to 60 minutes.
+      - name: Note Generation
+        description: Transforms transcripts into structured clinical notes (for example SOAP) with
+          customization options.
+      - name: Magic Edit
+        description: Refine generated notes using natural-language instructions for last-mile
+          customization.
+      - name: Patient Summaries
+        description: Patient-friendly post-visit instructions with multilingual support.
+      - name: FHIR Data Extraction
+        description: Extraction of FHIR-compatible structured data with ICD-10 and LOINC coding.
+      - name: Medical Dictation
+        description: Real-time transcription of dictated clinician speech.
+      - name: Dot Phrases
+        description: Auto-detection of provider-defined macros that expand into structured note
+          sections.
+      - name: Custom Dictionary
+        description: Specialized terminology for improved accuracy in niche domains.
+      - name: Feedback Reporting
+        description: Structured feedback APIs for measuring and improving generated content.
+      - name: Multi-Platform Copilot
+        description: Copilot app available as web app, iOS, Android, and Chrome extension.
+  - type: UseCases
+    data:
+      - name: Outpatient Documentation
+        description: Ambient note generation for outpatient visits.
+      - name: Telehealth Documentation
+        description: Integrated documentation for telehealth providers.
+      - name: EHR Integration
+        description: Sync notes and structured data into major EHRs.
+      - name: Voice-Enabled Applications
+        description: Foundation for third-party voice-enabled clinical tools.
+  - type: Integrations
+    data:
+      - name: Epic
+        description: EHR integration partner.
+      - name: athenahealth
+        description: EHR integration partner.
+      - name: Oracle Health
+        description: EHR integration partner.
+      - name: NextGen
+        description: EHR integration partner.
+      - name: Arya
+        description: EHR integration partner.
+      - name: Greenway
+        description: EHR integration partner.
+  - type: Authentication
+    data:
+      - name: OAuth 2.0 Client Credentials (Server API)
+        description: Server-to-server authentication using OAuth 2.0 client credentials configured
+          in the Nabla API Admin Console with a JWKS URL or static X.509 public key.
+      - name: JWT Access and Refresh Tokens (User API)
+        description: User-context tokens issued by the Server API for client-side calls on behalf of
+          a user.
+  - type: Compliance
+    data:
+      - name: HIPAA
+        description: HIPAA compliant for U.S. healthcare deployments.
+      - name: GDPR
+        description: GDPR compliant for European deployments.
+      - name: SOC 2 Type 2
+        description: SOC 2 Type 2 certified.
+      - name: ISO 27001
+        description: ISO 27001 certified.
+      - name: No Default Audio Retention
+        description: No audio stored by default; customer data is not used to train models.
+      - name: CHAI Member
+        description: Member of the Coalition for Health AI (CHAI).
+  - type: Adoption
+    data:
+      - name: 85,000+ Clinicians
+        description: More than 85,000 clinicians use Nabla.
+      - name: 150+ Health Organizations
+        description: Deployed across more than 150 health organizations.
+      - name: Time Savings
+        description: 55% of clinicians report saving at least one hour per day in documentation
+          time; reported 1.5x more appointments monthly and 27% reduction in burnout.
+  - type: Offices
+    data:
+      - name: Brooklyn
+        description: U.S. office in Brooklyn, New York.
+      - name: Paris
+        description: European headquarters in Paris, France.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
