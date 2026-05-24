@@ -1,0 +1,193 @@
+openapi: 3.1.0
+info:
+  title: Nabla Core API
+  description: |
+    Nabla provides ambient AI for clinicians. The Core API supports
+    transcription (synchronous, asynchronous, and WebSocket) of medical
+    encounters. The Server API issues OAuth 2.0 access tokens via JWT
+    client credentials, and the User API exchanges per-user JWT tokens
+    so that client applications can call the Core API on behalf of a
+    Copilot user.
+  version: '1.0'
+servers:
+  - url: https://api.nabla.com
+    description: Nabla production API
+security:
+  - bearerAuth: []
+tags:
+  - name: Authentication
+    description: OAuth and JWT token endpoints.
+  - name: Transcription
+    description: Medical-grade speech-to-text endpoints.
+paths:
+  /oauth/token:
+    post:
+      tags: [Authentication]
+      summary: Issue a server access token (OAuth 2.0 client credentials)
+      description: |
+        Exchange a JWT client assertion (RS256) for an OAuth 2.0 access
+        token used to authenticate Server API requests. Tokens typically
+        expire in one hour.
+      operationId: oauthToken
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [grant_type, client_assertion_type, client_assertion]
+              properties:
+                grant_type:
+                  type: string
+                  enum: [client_credentials]
+                client_assertion_type:
+                  type: string
+                  enum: [urn:ietf:params:oauth:client-assertion-type:jwt-bearer]
+                client_assertion:
+                  type: string
+                scope:
+                  type: string
+      responses:
+        '200':
+          description: Access token issued.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  token_type:
+                    type: string
+                  expires_in:
+                    type: integer
+        '401':
+          description: Invalid client assertion.
+  /jwt/authenticate/{user_id}:
+    post:
+      tags: [Authentication]
+      summary: Issue per-user access and refresh tokens
+      description: |
+        Server-to-server endpoint that mints access and refresh tokens
+        scoped to a single Copilot user, allowing a client application
+        to act on behalf of that user when calling the Core API.
+      operationId: jwtAuthenticate
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User tokens issued.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  refresh_token:
+                    type: string
+                  expires_in:
+                    type: integer
+  /jwt/refresh:
+    post:
+      tags: [Authentication]
+      summary: Refresh a user access token
+      operationId: jwtRefresh
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refresh_token]
+              properties:
+                refresh_token:
+                  type: string
+      responses:
+        '200':
+          description: New access token issued.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  expires_in:
+                    type: integer
+  /server/transcribe:
+    post:
+      tags: [Transcription]
+      summary: Transcribe a short audio file (synchronous)
+      description: |
+        Synchronous transcription of recorded audio up to 10 minutes in
+        length. Returns the transcript inline.
+      operationId: serverTranscribe
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [audio]
+              properties:
+                audio:
+                  type: string
+                  format: binary
+                language:
+                  type: string
+      responses:
+        '200':
+          description: Transcript payload.
+          content:
+            application/json:
+              schema:
+                type: object
+  /server/transcribe-async:
+    post:
+      tags: [Transcription]
+      summary: Submit an audio file for asynchronous transcription
+      description: |
+        Submit recorded audio (up to 60 minutes) for asynchronous
+        transcription. Results are delivered via callback or polled by
+        identifier.
+      operationId: serverTranscribeAsync
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [audio]
+              properties:
+                audio:
+                  type: string
+                  format: binary
+                callback_url:
+                  type: string
+                  format: uri
+                language:
+                  type: string
+      responses:
+        '202':
+          description: Transcription job accepted.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id:
+                    type: string
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 access token (Server API) or JWT access token (User API).
