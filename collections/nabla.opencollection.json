@@ -1,0 +1,154 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nabla Core API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Issue a server access token (OAuth 2.0 client credentials)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.nabla.com/oauth/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "client_assertion_type",
+                  "value": ""
+                },
+                {
+                  "name": "client_assertion",
+                  "value": ""
+                },
+                {
+                  "name": "scope",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Exchange a JWT client assertion (RS256) for an OAuth 2.0 access\ntoken used to authenticate Server API requests. Tokens typically\nexpire in one hour.\n"
+        },
+        {
+          "info": {
+            "name": "Issue per-user access and refresh tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.nabla.com/jwt/authenticate/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Server-to-server endpoint that mints access and refresh tokens\nscoped to a single Copilot user, allowing a client application\nto act on behalf of that user when calling the Core API.\n"
+        },
+        {
+          "info": {
+            "name": "Refresh a user access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.nabla.com/jwt/refresh",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refresh a user access token"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transcription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Transcribe a short audio file (synchronous)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.nabla.com/server/transcribe",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "audio",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "language",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Synchronous transcription of recorded audio up to 10 minutes in\nlength. Returns the transcript inline.\n"
+        },
+        {
+          "info": {
+            "name": "Submit an audio file for asynchronous transcription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.nabla.com/server/transcribe-async",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "audio",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "callback_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "language",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Submit recorded audio (up to 60 minutes) for asynchronous\ntranscription. Results are delivered via callback or polled by\nidentifier.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
