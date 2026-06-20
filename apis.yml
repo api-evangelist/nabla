@@ -2,7 +2,7 @@ aid: nabla
 url: https://raw.githubusercontent.com/api-evangelist/nabla/refs/heads/main/apis.yml
 name: Nabla
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 description: Nabla provides ambient AI for clinicians through its Copilot product, which generates
   clinical notes from patient encounters across more than 85,000 clinicians and 150+ health
   organizations. Nabla also publishes a public Core API that exposes the same underlying
