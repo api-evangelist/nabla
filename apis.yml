@@ -99,6 +99,14 @@ apis:
       - FN: Nabla
         url: https://www.nabla.com/contact
 common:
+  - type: TrustCenter
+    url: security/nabla-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/nabla-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/nabla-domain-security.yml
+  - type: Authentication
+    url: authentication/nabla-authentication.yml
   - type: Website
     url: https://www.nabla.com/
   - type: Documentation
