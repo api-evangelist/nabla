@@ -99,6 +99,8 @@ apis:
       - FN: Nabla
         url: https://www.nabla.com/contact
 common:
+  - type: AgenticAccess
+    url: agentic-access/nabla-agentic-access.yml
   - type: TrustCenter
     url: security/nabla-trust-center.yml
   - type: VulnerabilityDisclosure
