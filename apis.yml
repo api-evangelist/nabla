@@ -2,7 +2,20 @@ aid: nabla
 url: https://raw.githubusercontent.com/api-evangelist/nabla/refs/heads/main/apis.yml
 name: Nabla
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nabla.png
 description: Nabla provides ambient AI for clinicians through its Copilot product, which generates
   clinical notes from patient encounters across more than 85,000 clinicians and 150+ health
   organizations. Nabla also publishes a public Core API that exposes the same underlying
@@ -24,80 +37,100 @@ created: '2026-05-23'
 modified: '2026-05-23'
 specificationVersion: '0.19'
 apis:
-  - aid: nabla:nabla-core-api
-    name: Nabla Core API
-    description: The Nabla Core API transcribes medical encounters, generates structured clinical
-      notes (for example SOAP), extracts FHIR-normalized data with ICD-10 and LOINC coding, produces
-      multilingual patient-facing summaries, and supports magic edit, dictation, dot phrases, custom
-      dictionaries, and feedback reporting. The API offers REST, WebSocket, and asynchronous
-      endpoints, with audio file support up to 60 minutes.
-    humanURL: https://docs.nabla.com/
-    baseURL: https://api.nabla.com
-    tags:
-      - Transcription
-      - Clinical Notes
-      - SOAP
-      - FHIR
-      - Dictation
-      - Patient Summaries
-      - Magic Edit
-      - WebSocket
-    properties:
-      - type: Documentation
-        url: https://docs.nabla.com/
-      - type: GettingStarted
-        url: https://docs.nabla.com/guides/intro
-      - type: Authentication
-        url: https://docs.nabla.com/guides/authentication
-      - type: SampleApp
-        url: https://github.com/nabla/sample-app
-      - type: CopilotSampleApp
-        url: https://github.com/nabla/copilot-sample
-    contact:
-      - FN: Nabla
-        url: https://www.nabla.com/contact
-  - aid: nabla:nabla-copilot-server-api
-    name: Nabla Copilot Server API
-    description: The Server API is intended for server-to-server interactions, allowing backend
-      systems to manage Copilot users and resources via OAuth 2.0 client credentials. OAuth clients
-      can be configured with a JWKS URL (preferred for key rotation) or a static X.509-encoded
-      public key.
-    humanURL: https://docs.nabla.com/server/jwt-authenticate-copilot-user/
-    baseURL: https://api.nabla.com
-    tags:
-      - Server API
-      - OAuth 2.0
-      - Client Credentials
-      - User Management
-    properties:
-      - type: Documentation
-        url: https://docs.nabla.com/server/jwt-authenticate-copilot-user/
-      - type: Authentication
-        url: https://docs.nabla.com/guides/authentication
-    contact:
-      - FN: Nabla
-        url: https://www.nabla.com/contact
-  - aid: nabla:nabla-copilot-user-api
-    name: Nabla Copilot User API
-    description: The User API enables client-side applications to act on behalf of an individual
-      user by exchanging server-issued access and refresh tokens to autonomously call the Nabla
-      Core API. Includes WebSocket transcription for live medical encounters via
-      /user/copilot/listen.
-    humanURL: https://docs.nabla.com/user/copilot-listen-ws/
-    baseURL: https://api.nabla.com
-    tags:
-      - User API
-      - JWT
-      - WebSocket
-      - Live Transcription
-    properties:
-      - type: Documentation
-        url: https://docs.nabla.com/user/copilot-listen-ws/
-      - type: Authentication
-        url: https://docs.nabla.com/guides/authentication
-    contact:
-      - FN: Nabla
-        url: https://www.nabla.com/contact
+- aid: nabla:nabla-core-api
+  name: Nabla Core API
+  description: >-
+    The Nabla Core API transcribes medical encounters, generates structured clinical notes (for example
+    SOAP), extracts FHIR-normalized data with ICD-10 and LOINC coding, produces multilingual patient-facing
+    summaries, and supports magic edit, dictation, dot phrases, custom dictionaries, and feedback reporting.
+    The API offers REST, WebSocket, and asynchronous endpoints, with audio file support up to 60 minutes.
+  humanURL: https://docs.nabla.com/
+  baseURL: https://api.nabla.com
+  tags:
+  - Transcription
+  - Clinical Notes
+  - SOAP
+  - FHIR
+  - Dictation
+  - Patient Summaries
+  - Magic Edit
+  - WebSocket
+  properties:
+  - type: Documentation
+    url: https://docs.nabla.com/
+  - type: GettingStarted
+    url: https://docs.nabla.com/guides/intro
+  - type: Authentication
+    url: https://docs.nabla.com/guides/authentication
+  - type: SampleApp
+    url: https://github.com/nabla/sample-app
+  - type: CopilotSampleApp
+    url: https://github.com/nabla/copilot-sample
+  contact:
+  - FN: Nabla
+    url: https://www.nabla.com/contact
+- aid: nabla:nabla-copilot-server-api
+  name: Nabla Copilot Server API
+  description: >-
+    The Server API is intended for server-to-server interactions, allowing backend systems to manage Copilot
+    users and resources via OAuth 2.0 client credentials. OAuth clients can be configured with a JWKS
+    URL (preferred for key rotation) or a static X.509-encoded public key.
+  humanURL: https://docs.nabla.com/server/jwt-authenticate-copilot-user/
+  baseURL: https://api.nabla.com
+  tags:
+  - Server API
+  - OAuth 2.0
+  - Client Credentials
+  - User Management
+  properties:
+  - type: Documentation
+    url: https://docs.nabla.com/server/jwt-authenticate-copilot-user/
+  - type: Authentication
+    url: https://docs.nabla.com/guides/authentication
+  contact:
+  - FN: Nabla
+    url: https://www.nabla.com/contact
+- aid: nabla:nabla-copilot-user-api
+  name: Nabla Copilot User API
+  description: >-
+    The User API enables client-side applications to act on behalf of an individual user by exchanging
+    server-issued access and refresh tokens to autonomously call the Nabla Core API. Includes WebSocket
+    transcription for live medical encounters via /user/copilot/listen.
+  humanURL: https://docs.nabla.com/user/copilot-listen-ws/
+  baseURL: https://api.nabla.com
+  tags:
+  - User API
+  - JWT
+  - WebSocket
+  - Live Transcription
+  properties:
+  - type: Documentation
+    url: https://docs.nabla.com/user/copilot-listen-ws/
+  - type: Authentication
+    url: https://docs.nabla.com/guides/authentication
+  contact:
+  - FN: Nabla
+    url: https://www.nabla.com/contact
+- aid: nabla:nabla-authentication-api
+  name: Nabla Authentication API
+  description: OAuth and JWT token endpoints.
+  humanURL: https://docs.nabla.com/
+  baseURL: https://api.nabla.com
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/nabla-authentication-api-openapi.yml
+- aid: nabla:nabla-transcription-api
+  name: Nabla Transcription API
+  description: Medical-grade speech-to-text endpoints.
+  humanURL: https://docs.nabla.com/
+  baseURL: https://api.nabla.com
+  tags:
+  - Transcription
+  properties:
+  - type: OpenAPI
+    url: openapi/nabla-transcription-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/nabla-agentic-access.yml
