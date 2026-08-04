@@ -1,0 +1,16 @@
+{
+  "provider": "nabla",
+  "sources": [
+    "nabla-authentication-api-openapi.yml",
+    "nabla-transcription-api-openapi.yml"
+  ],
+  "outputs": [
+    "nabla-authentication-api-openapi.yml",
+    "nabla-transcription-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
