@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nabla Core Authentication Transcription API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transcription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Transcribe a short audio file (synchronous)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.nabla.com/server/transcribe",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "audio",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "language",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Synchronous transcription of recorded audio up to 10 minutes in\nlength. Returns the transcript inline.\n"
+        },
+        {
+          "info": {
+            "name": "Submit an audio file for asynchronous transcription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.nabla.com/server/transcribe-async",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "audio",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "callback_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "language",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Submit recorded audio (up to 60 minutes) for asynchronous\ntranscription. Results are delivered via callback or polled by\nidentifier.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

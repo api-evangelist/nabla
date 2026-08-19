@@ -1,0 +1,300 @@
+{
+  "item": [
+    {
+      "id": "dbeadf93-b172-4b8a-8014-ffaf66adf23c",
+      "name": "Transcription",
+      "description": {
+        "content": "Medical-grade speech-to-text endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82b88c34-334f-4a3f-b111-097edfdec079",
+          "name": "Transcribe a short audio file (synchronous)",
+          "request": {
+            "name": "Transcribe a short audio file (synchronous)",
+            "description": {
+              "content": "Synchronous transcription of recorded audio up to 10 minutes in\nlength. Returns the transcript inline.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "server",
+                "transcribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "audio",
+                  "type": "file",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "language",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "afb7e2a6-b6df-4ca3-a503-5cdaebfe2866",
+              "name": "Transcript payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "server",
+                    "transcribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "audio",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57d23d56-f329-4ea0-a0f9-6aea7ec6a681",
+          "name": "Submit an audio file for asynchronous transcription",
+          "request": {
+            "name": "Submit an audio file for asynchronous transcription",
+            "description": {
+              "content": "Submit recorded audio (up to 60 minutes) for asynchronous\ntranscription. Results are delivered via callback or polled by\nidentifier.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "server",
+                "transcribe-async"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "audio",
+                  "type": "file",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "callback_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "language",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e3b00173-4bdb-4fe5-8b8f-572ae42213d1",
+              "name": "Transcription job accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "server",
+                    "transcribe-async"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "audio",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "callback_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"job_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.nabla.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f1b5259a-e9b6-4fbd-872b-5fbe03c14383",
+    "name": "Nabla Core Authentication Transcription API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Nabla provides ambient AI for clinicians. The Core API supports\ntranscription (synchronous, asynchronous, and WebSocket) of medical\nencounters. The Server API issues OAuth 2.0 access tokens via JWT\nclient credentials, and the User API exchanges per-user JWT tokens\nso that client applications can call the Core API on behalf of a\nCopilot user.\n",
+      "type": "text/plain"
+    }
+  }
+}
