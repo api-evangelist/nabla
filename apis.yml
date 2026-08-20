@@ -79,6 +79,11 @@ apis:
   baseURL: https://api.nabla.com
   tags:
   - Server API
+  - Authentication
+  - Client Credentials
+  - User Management
+  tags_raw:
+  - Server API
   - OAuth 2.0
   - Client Credentials
   - User Management
