@@ -18,9 +18,9 @@ edges:
   capability_id: BC-2830.10
   capability_id_l1: BC-2830
   capability_name: Clinical Note Documentation
-  confidence: 0.75
-  evidence: POST /server/transcribe — Transcribe a short audio file (synchronous); "The Core API supports
-    transcription ... of medical encounters"
-  reason: Ambient/voice capture of clinician-patient encounters feeding clinical note authoring, which
-    is exactly Clinical Note Documentation's 'voice, ambient capture modes'. Slight ambiguity as this
-    tag only returns transcript text, not the note itself.
+  confidence: 0.78
+  evidence: POST /server/transcribe 'Transcribe a short audio file (synchronous)'; 'The Core API supports
+    transcription ... of medical encounters'
+  reason: Ambient/voice transcription of clinical encounters feeding clinician note generation matches
+    Clinical Note Documentation, which explicitly covers voice and ambient capture modes. Slight residual
+    ambiguity because the endpoints expose raw transcription rather than note authoring.
