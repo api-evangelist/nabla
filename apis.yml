@@ -148,6 +148,9 @@ apis:
   - type: OpenAPI
     url: openapi/nabla-transcription-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/nabla-capability-edges.yml
+    name: Nabla Business Capability Map
   - type: AgenticAccess
     url: agentic-access/nabla-agentic-access.yml
   - type: TrustCenter
