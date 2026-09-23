@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Nabla Core Authentication API
   description: 'Nabla provides ambient AI for clinicians. The Core API supports
@@ -11,9 +11,7 @@ info:
 
     so that client applications can call the Core API on behalf of a
 
-    Copilot user.
-
-    '
+    Copilot user.'
   version: '1.0'
 servers:
 - url: https://api.nabla.com
@@ -33,9 +31,7 @@ paths:
 
         token used to authenticate Server API requests. Tokens typically
 
-        expire in one hour.
-
-        '
+        expire in one hour.'
       operationId: oauthToken
       security: []
       requestBody:
@@ -86,9 +82,7 @@ paths:
 
         scoped to a single Copilot user, allowing a client application
 
-        to act on behalf of that user when calling the Core API.
-
-        '
+        to act on behalf of that user when calling the Core API.'
       operationId: jwtAuthenticate
       parameters:
       - in: path

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Nabla Core Authentication Transcription API
+  title: Nabla Core Transcription API
   description: 'Nabla provides ambient AI for clinicians. The Core API supports
 
     transcription (synchronous, asynchronous, and WebSocket) of medical
@@ -11,9 +11,7 @@ info:
 
     so that client applications can call the Core API on behalf of a
 
-    Copilot user.
-
-    '
+    Copilot user.'
   version: '1.0'
 servers:
 - url: https://api.nabla.com
@@ -31,9 +29,7 @@ paths:
       summary: Transcribe a short audio file (synchronous)
       description: 'Synchronous transcription of recorded audio up to 10 minutes in
 
-        length. Returns the transcript inline.
-
-        '
+        length. Returns the transcript inline.'
       operationId: serverTranscribe
       requestBody:
         required: true
@@ -65,9 +61,7 @@ paths:
 
         transcription. Results are delivered via callback or polled by
 
-        identifier.
-
-        '
+        identifier.'
       operationId: serverTranscribeAsync
       requestBody:
         required: true
